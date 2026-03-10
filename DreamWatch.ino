@@ -16,10 +16,9 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 bool lastTState = LOW;
 bool lastBState = LOW;
 
-int hh = 6;
-int mm = 0;
-int ss = 0;
-bool isAM = true;
+int hh = 11;
+int mm = 59;
+int ss = 52;
 
 void setup() {
   pinMode(TBUTTON_PIN, INPUT_PULLDOWN);
@@ -68,11 +67,9 @@ void loop() {
       mm = 0;
       hh++;
     }
-    if (hh >= 13) {
-      hh = 1;
-      isAM = !isAM;
+    if (hh >= 24) {
+      hh = 0;
     }
-
     updateDisplay();
   }
 
@@ -89,13 +86,13 @@ void loop() {
 }
 
 void updateDisplay() {
-  display.drawBitmap(25, 26, digits24[hh/10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
-  display.drawBitmap(40, 26, digits24[hh%10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
+  display.drawBitmap(25, 26, digits24[((hh % 12 == 0) ? 12 : hh % 12)/10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
+  display.drawBitmap(40, 26, digits24[((hh % 12 == 0) ? 12 : hh % 12)%10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
   display.drawBitmap(52, 26, Colon_24px, W_COLON_24PX, H_COLON_24PX, WHITE);
   display.drawBitmap(60, 26, digits24[mm/10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
   display.drawBitmap(75, 26, digits24[mm%10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
 
-  display.drawBitmap(89, 27, AMPM10[isAM ? 0 : 1], W_AM_10PX, H_AM_10PX, WHITE, BLACK);
+  display.drawBitmap(89, 27, AMPM10[hh/12], W_AM_10PX, H_AM_10PX, WHITE, BLACK);
 
   display.drawLine(88, 38, 102, 38, WHITE);
 
