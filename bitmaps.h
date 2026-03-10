@@ -1707,6 +1707,19 @@ const uint8_t* const digits24[] PROGMEM = {
   num9_24px
 };
 
+const uint8_t* const digits18[] PROGMEM = {
+  num0_18px,
+  num1_18px,
+  num2_18px,
+  num3_18px,
+  num4_18px,
+  num5_18px,
+  num6_18px,
+  num7_18px,
+  num8_18px,
+  num9_18px
+};
+
 const uint8_t* const digits12[] PROGMEM = {
   num0_12px,
   num1_12px,
