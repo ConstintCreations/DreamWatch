@@ -2,50 +2,6 @@
 #define W_NUM0_24PX 12
 #define H_NUM0_24PX 24
 
-const uint8_t* const digits24[] PROGMEM = {
-  num0_24px,
-  num1_24px,
-  num2_24px,
-  num3_24px,
-  num4_24px,
-  num5_24px,
-  num6_24px,
-  num7_24px,
-  num8_24px,
-  num9_24px
-};
-
-const uint8_t* const digits12[] PROGMEM = {
-  num0_12px,
-  num1_12px,
-  num2_12px,
-  num3_12px,
-  num4_12px,
-  num5_12px,
-  num6_12px,
-  num7_12px,
-  num8_12px,
-  num9_12px
-};
-
-const uint8_t* const digits10[] PROGMEM = {
-  num0_10px,
-  num1_10px,
-  num2_10px,
-  num3_10px,
-  num4_10px,
-  num5_10px,
-  num6_10px,
-  num7_10px,
-  num8_10px,
-  num9_10px
-};
-
-const uint8_t* const AMPM10[] PROGMEM = {
-  AM_10px,
-  PM_10px
-};
-
 static const unsigned char PROGMEM num0_24px[] = {
   0b01111111, 0b11100000,
   0b11111111, 0b11110000,
@@ -1738,3 +1694,46 @@ static const unsigned char PROGMEM QASelected_30px[] = {
   0b00000000, 0b00000000, 0b00000000, 0b00000000,
 };
 
+const uint8_t* const digits24[] PROGMEM = {
+  num0_24px,
+  num1_24px,
+  num2_24px,
+  num3_24px,
+  num4_24px,
+  num5_24px,
+  num6_24px,
+  num7_24px,
+  num8_24px,
+  num9_24px
+};
+
+const uint8_t* const digits12[] PROGMEM = {
+  num0_12px,
+  num1_12px,
+  num2_12px,
+  num3_12px,
+  num4_12px,
+  num5_12px,
+  num6_12px,
+  num7_12px,
+  num8_12px,
+  num9_12px
+};
+
+const uint8_t* const digits10[] PROGMEM = {
+  num0_10px,
+  num1_10px,
+  num2_10px,
+  num3_10px,
+  num4_10px,
+  num5_10px,
+  num6_10px,
+  num7_10px,
+  num8_10px,
+  num9_10px
+};
+
+const uint8_t* const AMPM10[] PROGMEM = {
+  AM_10px,
+  PM_10px
+};
