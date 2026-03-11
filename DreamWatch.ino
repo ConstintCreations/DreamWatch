@@ -44,31 +44,31 @@ void loop() {
   esp_sleep_wakeup_cause_t cause = esp_sleep_get_wakeup_cause();
 
   if (cause == ESP_SLEEP_WAKEUP_EXT1) {
-    bool tState = digitalRead(TBUTTON_PIN);
-    bool bState = digitalRead(BBUTTON_PIN);
 
-    if (lastTState == HIGH && tState == LOW) {
-        if (displayScreen == 3) {
-          displayScreen = 0;
-        } else {
-          displayScreen = 3;
-        }
-        display.clearDisplay();
-        updateDisplay();
-        Serial.println("Top Button Pressed");
-    }
-    lastTState = tState;
+    if (digitalRead(TBUTTON_PIN)) {
 
-    if (lastBState == HIGH && bState == LOW) {
-        displayScreen++;
-        if (displayScreen > 2) {
-          displayScreen = 0;
-        }
-        display.clearDisplay();
-        updateDisplay();
-        Serial.println("Bottom Button Pressed");
+      if (displayScreen == 3) {
+        displayScreen = 0;
+      } else {
+        displayScreen = 3;
+      }
+
+      updateDisplay();
+      Serial.println("Top Button Pressed");
+
+      while (digitalRead(TBUTTON_PIN));
     }
-    lastBState = bState;
+
+    if (digitalRead(BBUTTON_PIN)) {
+
+      displayScreen++;
+      if (displayScreen > 2) displayScreen = 0;
+
+      updateDisplay();
+      Serial.println("Bottom Button Pressed");
+
+      while (digitalRead(BBUTTON_PIN));
+    }
   }
 
   if (cause == ESP_SLEEP_WAKEUP_TIMER) {
@@ -101,6 +101,7 @@ void loop() {
 }
 
 void updateDisplay() {
+  display.clearDisplay();
   switch(displayScreen) {
     case 0:
       display.drawBitmap(25, 26, digits24[((hh % 12 == 0) ? 12 : hh % 12)/10], W_NUM0_24PX, H_NUM0_24PX, WHITE, BLACK);
